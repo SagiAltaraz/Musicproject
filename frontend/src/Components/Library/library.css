@@ -1,0 +1,56 @@
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 240px;
+    height: calc(100% - 60px);
+    background-color: #1f1f1f;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.playlist-actions a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.playlist-actions a:hover {
+    background-color: #282828;
+}
+
+.user-playlists li {
+    padding: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+    
+}
+
+.user-playlists li:hover {
+    color: #1DB954;
+}
+
+.playlist-actions {
+    list-style: none;
+    padding: 0;
+}
+
+.playlist-action-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.playlist-action-btn img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}

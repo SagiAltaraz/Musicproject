@@ -1,0 +1,151 @@
+.now-playing-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #282828;
+    color: white;
+    padding: 10px 20px;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .current-track {
+    display: flex;
+    align-items: center;
+    width: 30%;
+  }
+  
+  .current-track > img {
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+  }
+  
+  .current-track > div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .current-track img {
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+  }
+  
+  .track-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .track-name {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .artist-name {
+    font-size: 12px;
+    color: #b3b3b3;
+  }
+  
+  .track-controls .like-btn {
+    background: transparent;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+  }
+  .playback-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .playback-buttons button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
+  
+  .playback-buttons button svg {
+    width: 16px;
+    height: 16px;
+    fill: #b3b3b3; /* Light gray color for icons */
+  }
+  
+  .playback-buttons button:hover svg {
+    fill: white; /* White on hover */
+  }
+  
+  .play-pause {
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .play-pause svg {
+    fill: black !important;
+  }
+
+  .play-pause:hover {
+    opacity: 0.7;
+  }
+  
+  .playback-buttons button:hover {
+    opacity: 0.7;
+  }
+  .play-pause {
+    background-color: white !important;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: black !important;
+  }
+  
+  .playback-progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #535353;
+    border-radius: 2px;
+  }
+  
+  .current-time, .total-time {
+    font-size: 11px;
+    color: #b3b3b3;
+  }
+  
+  .additional-controls {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  
+  .additional-controls button {
+    background: transparent;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+  }

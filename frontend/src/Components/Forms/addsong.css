@@ -1,0 +1,71 @@
+/* AddSongForm CSS */
+
+.add-song-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .add-song-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .add-song-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-song-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .add-song-form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .add-song-form input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+  }
+  
+  .add-song-form button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-song-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-song-form p {
+    text-align: center;
+    color: #007BFF;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .add-song-form p.error {
+    color: #FF0000;
+  }
+  
