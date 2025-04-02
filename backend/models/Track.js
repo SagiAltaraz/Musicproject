@@ -1,21 +1,26 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const trackSchema = new mongoose.Schema({
-    Title:{
-        type: String,
-        require: true,
-    },
-    Artist:{
-        type: String,
-        require: true,
-    },
-    Image:{
-        type: String,
-        require: [true, 'Image name is require']
-    },
-    Audio:{
-        type: String,
-        require: [true, 'Audio name is require']
-    }
+  title: {
+    type: String,
+    required: true,
+  },
+  artist: {
+    type: String,
+    required: true,
+  },
+  youtubeUrl: {
+    type: String,
+    required: true,
+  },
+  downloadedAt: {
+    type: Date,
+    default: Date.now,
+  },
+  downloadedBy: {
+    type: String, // Could be a user ID or username if you have user authentication
+  },
 });
-module.exports = mongoose.model('Track',trackSchema)
+
+
+module.exports = mongoose.model("Track", trackSchema);

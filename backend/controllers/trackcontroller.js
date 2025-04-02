@@ -1,8 +1,7 @@
-import Track from '../models/Track.js';
-import mongoose from 'mongoose';
+const Track = require('../models/Track');
+const mongoose = require('mongoose');
 
-
-export const getAllTrack = async (req, res) => {
+const getAllTrack = async (req, res) => {
     try {
         const tracks = await Track.find({});
         res.json(tracks);
@@ -12,25 +11,25 @@ export const getAllTrack = async (req, res) => {
     }
 };
 
-export const saveTrack = async (req, res) => {
+const saveTrack = async (req, res) => {
     try {
         const { Title, Artist, Image, Audio } = req.body;
         console.log(req.body)
-        console.log(Title,Artist,Image,Audio)
+        
         if (!Title || !Artist || !Image || !Audio) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
         const newTrack = new Track({ Title, Artist, Image, Audio });
         const savedTrack = await newTrack.save();
-        res.status(201).json(savedTrack);
+        return res.status(201).json(savedTrack);
     } catch (error) {
         console.error("Error saving track:", error);
         res.status(500).json({ message: "Can't save the song" });
     }
 };
 
-export const deleteTrack = async (req, res) => {
+const deleteTrack = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -49,40 +48,62 @@ export const deleteTrack = async (req, res) => {
     }
 };
 
-export const playTrack =  async (req,res) => {
+const playTrack = async (req, res) => {
     try{
         const {id} = req.params;
         const track = await Track.findById(id)
         if(!track){
-            res.status(404).json({message: "Track not found"})
+           return res.status(404).json({message: "Track not found"})
         }
-        res.status(200).json({message: "Track played successfully"})
+        return res.status(200).json(track);
     }catch(error){
-        res.status(500).json({message: "Canot play the track"});
+        res.status(500).json({message: "Cannot play the track"});
     }
 };
 
-export const playNext =  async (req, res) => {
+const playNext = async (req, res) => {
     try{
         const {id} = req.params;
         const track = await Track.findById(id)
         if(!track){
             res.status(404).json({message: "Track not found"})
         }
-        res.status(200).json({message: "Track played successfully"})
+        // Find next track in playlist
+        const tracks = await Track.find({});
+        const currentIndex = tracks.findIndex(t => t._id.toString() === id);
+        const nextIndex = (currentIndex + 1) % tracks.length;
+        const nextTrack = tracks[nextIndex];
+        
+        res.status(200).json(nextTrack);
     }catch(error){
-        res.status(500).json({message: "Canot play the track"});
+        res.status(500).json({message: "Cannot play the track"});
     }
 };
-export const playPrev =  async (req, res) => {
+
+const playPrev = async (req, res) => {
     try{
         const {id} = req.params;
         const track = await Track.findById(id)
         if(!track){
             res.status(404).json({message: "Track not found"})
         }
-        res.status(200).json({message: "Track played successfully"})
+        // Find previous track in playlist
+        const tracks = await Track.find({});
+        const currentIndex = tracks.findIndex(t => t._id.toString() === id);
+        const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
+        const prevTrack = tracks[prevIndex];
+        
+        res.status(200).json(prevTrack);
     }catch(error){
-        res.status(500).json({message: "Canot play the track"});
+        res.status(500).json({message: "Cannot play the track"});
     }
+};
+
+module.exports = {
+    getAllTrack,
+    saveTrack,
+    deleteTrack,
+    playTrack,
+    playNext,
+    playPrev
 };

@@ -1,29 +1,18 @@
 import React from 'react';
 import './library.css';
-//import './addsong';
 
-//const [library, AddSongForm] = useState(""); 
-
-function Library() {
-    const AddSongForm = async (e) => {
-        console.log({ e })
-        try {
-            const response = await fetch('http://localhost:3035/');
-            console.log(response);
-
-        } catch (error) {
-            console.error({ error })
+function Library({ onToggleAddSongForm }) {
+    const handleAddSongClick = (e) => {
+        e.preventDefault();
+        if (onToggleAddSongForm) {
+            onToggleAddSongForm();
         }
-    };  
-    const DeleteSongForm = async (e) => {
-        console.log({ e })
-        try {
-            const response = await fetch('http://localhost:3035/');
-            console.log(response);
-
-        } catch (error) {
-            console.error({ error })
-        }
+    };
+    
+    const handleDeleteSongClick = (e) => {
+        e.preventDefault();
+        console.log("Delete song clicked");
+        // Implement delete song functionality
     };
 
     return (
@@ -46,15 +35,15 @@ function Library() {
                 </ul>
                 <div className="user-playlists">
                     <ul>
-                        <li onClick={AddSongForm} >Add Song</li>
-                        <li onClick={DeleteSongForm}>Delete Song</li>
+                        <li onClick={handleAddSongClick}>Add Song</li>
+                        <li onClick={handleDeleteSongClick}>Delete Song</li>
                         <li>Song Library</li>
                     </ul>
                 </div>
             </div>
         </div>
         </>
-    )
+    );
 }
 
 export default Library;
