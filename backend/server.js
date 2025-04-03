@@ -22,7 +22,7 @@ async function connectDB() {
 }
 connectDB();
 
-app.use(trackRoutes)
+app.use(trackRoutes);
 
 app.listen(PORT, () => {
     console.log(`Serveris running on http://localhost:${PORT}/`);

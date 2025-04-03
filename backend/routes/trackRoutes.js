@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers/searchsong');
+const searchsongControllers = require('../controllers/searchsong');
 const trackController = require('../controllers/trackcontroller');
-
+const downloadController = require('../controllers/downlowd');
 
 
 
@@ -14,10 +14,12 @@ const trackController = require('../controllers/trackcontroller');
 // router.delete('/delete', trackController.deleteTrack);
 
 router.get('/getListOfSongs',(req,res)=>{
-    controllers.searchYouTube(req,res)
+    searchsongControllers.searchYouTube(req,res)
 })
 
-
+router.get('/downloadSong', (req, res) => {
+    downloadController.downloadFromYoutube(req, res); 
+})
 
 
 module.exports = router;
