@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const searchsongControllers = require('../controllers/searchsong');
 const trackController = require('../controllers/trackcontroller');
-const downloadController = require('../controllers/downlowd');
+const downloadController = require('../controllers/download');
 const searchSuggestionController = require('../controllers/searchsuggestion');
 
 
@@ -16,13 +16,12 @@ const searchSuggestionController = require('../controllers/searchsuggestion');
 
 router.get('/getListOfSongs',(req,res)=>{
     searchsongControllers.searchYouTube(req,res)
-})
-
+});
 router.get('/downloadSong', (req, res) => {
     downloadController.downloadFromYoutube(req, res); 
-})
+});
 router.get('/searchSuggestions', (req, res) => {
-    searchsongControllers.searchSuggestions(req, res);
+    searchSuggestionController.searchSuggestions(req, res);
 });
 
 

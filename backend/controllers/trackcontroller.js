@@ -49,15 +49,17 @@ const deleteTrack = async (req, res) => {
 };
 
 const playTrack = async (req, res) => {
-    try{
-        const {id} = req.params;
-        const track = await Track.findById(id)
-        if(!track){
-           return res.status(404).json({message: "Track not found"})
+    try {
+        const { id } = req.params;
+        const track = await Track.findById(id);
+        if (!track) {
+            return res.status(404).json({ message: "Track not found" });
         }
-        return res.status(200).json(track);
-    }catch(error){
-        res.status(500).json({message: "Cannot play the track"});
+        
+        res.status(200).json(track);
+    } catch (error) {
+        console.error("Error playing track:", error);
+        res.status(500).json({ message: "Cannot play the track" });
     }
 };
 
